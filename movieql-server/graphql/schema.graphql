@@ -1,15 +1,13 @@
-type Anime {
+type Manga {
     id: Int!
-    name: String!
-    score: Float!
+    n: String
+    type: String
+    l: String
 }
 
 type Query {
-    animes: [Anime]!
-    anime(id: Int!): Anime
-}
-
-type Mutation {
-    addAnime(name: String!, score: Float!): Anime!
-    deleteAnime(id: Int!): Boolean!
+    mangas: [Manga]!
+    manga(id: Int!): Manga
+    thumb(id: Int!): String
+    readUrl(id: Int!): String
 }

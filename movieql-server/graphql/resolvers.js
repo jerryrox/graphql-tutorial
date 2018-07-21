@@ -1,14 +1,12 @@
-import { getAnime, getById, deleteAnime, addAnime } from './data';
+import { getMangas, getThumbUrl, getReadUrl } from './data';
 
 const resolvers = {
     Query: {
-        animes: () => getAnime(),
-        anime: (_, args) => getById(args.id),
+        mangas: () => getMangas(""),
+        manga: (_, args) => getMangas(args.name),
+        thumb: (_, args) => getThumbUrl(args.id),
+        readUrl: (_, args) => getReadUrl(args.id)
     },
-    Mutation: {
-        addAnime: (_, args) => addAnime(args.name, args.score),
-        deleteAnime: (_, args) => deleteAnime(args.id)
-    }
 };
 
 export default resolvers;

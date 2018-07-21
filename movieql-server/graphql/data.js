@@ -1,36 +1,18 @@
-let nextId = 0;
-const anime = [];
+import axios from 'axios';
+const HITOMI_CHAN_GALLERIES = "http://192.167.0.167:4000/api/gallery";
+const HITOMI_CHAN_THUMB = "http://192.167.0.167:4000/api/thumbs/big/";
+const HITOMI_CHAN_READ = "http://192.167.0.167:4000/gallery/read/";
 
-export const getAnime = () => anime;
-
-export const getById = id => {
-    return anime.filter(a => a.id === id)[0];
+export const getMangas = (name) => {
+    return axios.get(`${HITOMI_CHAN_GALLERIES}?n=${name}`)
+        .then(res => res.data.data)
+        .catch(e => console.log(e));
 };
 
-export const deleteAnime = (id) => {
-    for(let i=anime.length-1; i>=0; i--) {
-        if(anime[i].id === id) {
-            anime.splice(i, 1);
-            return true;
-        }
-    }
-    return false;
+export const getThumbUrl = (id) => {
+    return HITOMI_CHAN_THUMB + id;
 };
 
-export const addAnime = (name, score) => {
-    let newAnime = {
-        id: nextId++,
-        name,
-        score
-    };
-    anime.push(newAnime);
-    return newAnime;
+export const getReadUrl = (id) => {
+    return HITOMI_CHAN_READ + id;
 };
-
-// Add default anime
-addAnime("Gochuumon wa Usagi desu ka?", 5);
-addAnime("Gochuumon wa Usagi desu ka??", 5);
-addAnime("Kin'iro Mosaic", 4);
-addAnime("Kono Subarashii Sekai ni Shukufuku wo!", 4.7);
-addAnime("Amagi Brilliant Park", 4.6);
-addAnime("Kimi no na wa", 4.2);
