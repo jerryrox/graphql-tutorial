@@ -1,9 +1,13 @@
-import { people, getById } from './data';
+import { getAnime, getById, deleteAnime, addAnime } from './data';
 
 const resolvers = {
     Query: {
-        people: () => people,
-        person: (_, args) => getById(args.id)
+        animes: () => getAnime(),
+        anime: (_, args) => getById(args.id),
+    },
+    Mutation: {
+        addAnime: (_, args) => addAnime(args.name, args.score),
+        deleteAnime: (_, args) => deleteAnime(args.id)
     }
 };
 

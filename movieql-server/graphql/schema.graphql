@@ -1,11 +1,15 @@
-type Person {
+type Anime {
     id: Int!
     name: String!
-    age: Int!
-    gender: String!
+    score: Float!
 }
 
 type Query {
-    people: [Person]!
-    person(id: Int!): Person
+    animes: [Anime]!
+    anime(id: Int!): Anime
+}
+
+type Mutation {
+    addAnime(name: String!, score: Float!): Anime!
+    deleteAnime(id: Int!): Boolean!
 }
