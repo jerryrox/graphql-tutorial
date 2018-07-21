@@ -1,0 +1,9 @@
+{
+  "name": "movieql-server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
+  "dependencies": {
+    "graphql-yoga": "^1.14.12"
+  }
+}
